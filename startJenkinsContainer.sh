@@ -48,6 +48,7 @@ fi
 if [[ -d "/var/jenkins-home" ]]
 then
         sudo rm -rf /var/jenkins-home
+        echo "******** Jenkins Folder Deleted**********"
 fi
 #sudo mkdir /var/jenkins-home
 
@@ -55,14 +56,17 @@ fi
 if [[ -d "/home/ubuntu/packageRepo" ]]
 then
         sudo rm -rf /home/ubuntu/packageRepo
+        echo "********** PackageRepo Folder Deleted**********"
 fi
 
 sudo mkdir /home/ubuntu/packageRepo
 cd /home/ubuntu/packageRepo
+echo "********** Packagerepo folder created **********"
 sudo git lfs clone https://github.com/yash-itt/test.git
 cd test
+echo "********** Complete checkout to repo **********"
 sudo unzip jenkins-home.zip -d /var/
-
+echo "********** Unzip completed **********"
 #stopping existing jenkins docker and pulling the upadted
 isContainerRunning=$(sudo docker ps -q -f "name=adpq-jenkins")
 if [[ "$isContainerRunning" != "" ]]
@@ -77,5 +81,4 @@ then
         sudo docker stop $isJenkinsImageExist
         sudo docker rm $isJenkinsImageExist
 fi
-
 sudo docker run -d --name adpq-jenkins -p 8080:8080 -p 50000:50000 -v /var/jenkins-home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -v $(which docker):/usr/bin/docker -v /home/ubuntu:/var/jenkins_home/deployCodeFiles/ -u root yashittdocker/adpq-jenkins:$jenkinsContainerTag

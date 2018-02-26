@@ -1,0 +1,7 @@
+<<<<<<< HEAD
+ARG tag=latest
+FROM yashittdocker/adpq-mongo:${tag}
+=======
+ARG tag=latest
+FROM yashittdocker/adpq-mongo:${tag}
+>>>>>>> b8334056e7c997e8dd50466e57d6dac6112b6e68

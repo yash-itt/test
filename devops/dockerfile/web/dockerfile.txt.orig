@@ -1,0 +1,11 @@
+<<<<<<< HEAD
+FROM tomcat:8-jre8
+RUN ["rm", "-fr", "/usr/local/tomcat/webapps/ROOT"]
+COPY ROOT.war /usr/local/tomcat/webapps/ROOT.war
+CMD ["catalina.sh", "run"]
+=======
+FROM tomcat:8-jre8
+RUN ["rm", "-fr", "/usr/local/tomcat/webapps/ROOT"]
+COPY ROOT.war /usr/local/tomcat/webapps/ROOT.war
+CMD ["catalina.sh", "run"]
+>>>>>>> b8334056e7c997e8dd50466e57d6dac6112b6e68
